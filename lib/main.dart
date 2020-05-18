@@ -6,6 +6,7 @@ import 'package:orbit/repositories/loggedin_bloc.dart';
 import 'package:provider/provider.dart';
 
 void main() {
+  Provider.debugCheckInvalidValueType = null ;
   runApp(MyApp());
 }
 

@@ -6,7 +6,7 @@ enum LoggedEvent {
 
 class LoggedBloc extends Bloc<LoggedEvent, bool> {
   @override
-  bool get initialState => true ;
+  bool get initialState => false ;
 
   @override
   Stream<bool> mapEventToState(

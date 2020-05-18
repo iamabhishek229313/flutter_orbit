@@ -1,7 +1,11 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:orbit/features/home_page/home_page.dart';
+import 'package:orbit/features/login_page/login_page.dart';
+import 'package:orbit/features/signup_page/signup_page.dart';
 import 'package:orbit/repositories/loggedin_bloc.dart';
 
 class WrapperScreen extends StatefulWidget {
@@ -16,13 +20,11 @@ class _WrapperScreenState extends State<WrapperScreen> {
   Widget build(BuildContext context) {
     ScreenUtil.init(context);
 
-    return new Scaffold(
-      body: BlocBuilder<LoggedBloc,bool>(
-        builder: (BuildContext context, bool isLogged) {
-          return isLogged ? HomePage() : Wrapper();
-        },
-      )
-    );
+    return new Scaffold(body: BlocBuilder<LoggedBloc, bool>(
+      builder: (BuildContext context, bool isLogged) {
+        return isLogged ? HomePage() : Wrapper();
+      },
+    ));
   }
 }
 
@@ -59,8 +61,9 @@ class Wrapper extends StatelessWidget {
                         'By clicking "Log in",you agree with our Terms.\n Learn how we process your data in our Privacy  Policy and Cookies Policy',
                         textAlign: TextAlign.center,
                         style: new TextStyle(
-                          fontFamily: 'Nunito',
-                            color: Colors.white, fontWeight: FontWeight.w500),
+                            fontFamily: 'Nunito',
+                            color: Colors.white,
+                            fontWeight: FontWeight.w500),
                       ),
                       new SizedBox(height: ScreenUtil().setHeight(50.0)),
                       new Container(
@@ -72,11 +75,11 @@ class Wrapper extends StatelessWidget {
                           color: Colors.white,
                           elevation: 10.0,
                           onPressed: () {
-                            // Navigator.push(
-                            //     context,
-                            //     MaterialPageRoute(
-                            //         builder: (context) =>
-                            //             PhoneNumberScreen()));
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        Login()));
                           },
                           child: new Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -99,15 +102,12 @@ class Wrapper extends StatelessWidget {
                         width: double.infinity,
                         height: ScreenUtil().setHeight(105.0),
                         child: new RaisedButton(
-
                           shape: new RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(90.0)),
                           color: Colors.white,
                           elevation: 10.0,
                           onPressed: () {
-                            var snkBAr = new SnackBar(
-                                content: new Text(
-                                    "You can add this feature dev 😍"));
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => Signup()));
                           },
                           child: new Row(
                             mainAxisAlignment: MainAxisAlignment.center,

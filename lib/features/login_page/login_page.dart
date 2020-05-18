@@ -2,25 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/screenutil.dart';
 
 class Login extends StatefulWidget {
-  final bool isMentor ;
-
-  const Login({Key key, this.isMentor}) : super(key: key);
   @override
   _LoginState createState() => _LoginState();
 }
 
 class _LoginState extends State<Login> {
   TextEditingController _emailController = new TextEditingController();
-  TextEditingController _collegenumberController = new TextEditingController();
+  TextEditingController _password = new TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: new AppBar(
-        backgroundColor: Theme.of(context).backgroundColor,
+        backgroundColor: Theme.of(context).accentColor,
         elevation: 0.0,
       ),
-      backgroundColor:Theme.of(context).backgroundColor,
+      backgroundColor: Theme.of(context).accentColor,
       body: Padding(
         padding: EdgeInsets.only(
             top: ScreenUtil().setWidth(60.0),
@@ -32,7 +29,7 @@ class _LoginState extends State<Login> {
               "Welcome back!",
               style: new TextStyle(
                   fontFamily: 'Nunito',
-                  color: Colors.white,
+                  color: Theme.of(context).textSelectionColor,
                   letterSpacing: 1.2,
                   fontSize: ScreenUtil().setSp(75.0),
                   fontWeight: FontWeight.w600),
@@ -65,8 +62,8 @@ class _LoginState extends State<Login> {
               height: ScreenUtil().setHeight(30.0),
             ),
             new TextField(
-              controller: _collegenumberController,
-              keyboardType: TextInputType.number,
+              controller: _password,
+              obscureText: true,
               style: new TextStyle(
                 fontFamily: 'Nunito',
                 color: Colors.white,
@@ -74,9 +71,7 @@ class _LoginState extends State<Login> {
               decoration: new InputDecoration(
                   icon: Icon(Icons.keyboard),
                   border: new OutlineInputBorder(),
-                  hintText: widget.isMentor ? "SSID" : "Registration Number",
-                  helperText:
-                      widget.isMentor ? "Your SSID" : "Registration Number"),
+                  helperText: "Password"),
             ),
             new SizedBox(
               height: ScreenUtil().setHeight(80.0),
@@ -89,7 +84,6 @@ class _LoginState extends State<Login> {
   }
 }
 
-
 class Login_Button extends StatelessWidget {
   const Login_Button({
     Key key,
@@ -97,26 +91,27 @@ class Login_Button extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new Container(
-      height: ScreenUtil().setHeight(120.0),
-      child: RaisedButton(
-        color: Theme.of(context).backgroundColor,
+    return Container(
+      height: ScreenUtil().setHeight(105.0),
+      child: new RaisedButton(
         shape: new RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(50.0),
-            side: BorderSide(color: Colors.white, width: 1)),
+            borderRadius: BorderRadius.circular(90.0)),
+        color: Colors.white,
+        elevation: 10.0,
         onPressed: () {
-         // Navigator.push(context , MaterialPageRoute(builder: (context) => StudentHomePage()));
-          // Few Backend Stuffs ..
-          // Thne go the Homapage after all signup things made .
-          //Navigator.push(context, MaterialPageRoute(builder: (context) =>  Check(userName: _controller.text)));
+          // Will talk to the backend .
         },
-        child: new Text(
-          "Login",
-          style: new TextStyle(
-              fontFamily: 'Nunito',
-              color: Colors.white,
-              fontSize: ScreenUtil().setSp(65.0),
-              fontWeight: FontWeight.w200),
+        child: new Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            new Text(
+              "LOG IN",
+              style: new TextStyle(
+                  fontFamily: 'Nunito',
+                  color: Theme.of(context).textSelectionColor,
+                  letterSpacing: 1.2),
+            )
+          ],
         ),
       ),
     );
