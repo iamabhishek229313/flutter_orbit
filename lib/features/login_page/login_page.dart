@@ -71,6 +71,7 @@ class _LoginState extends State<Login> {
               decoration: new InputDecoration(
                   icon: Icon(Icons.keyboard),
                   border: new OutlineInputBorder(),
+                  hintText: "########",
                   helperText: "Password"),
             ),
             new SizedBox(

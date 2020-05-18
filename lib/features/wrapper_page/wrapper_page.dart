@@ -42,14 +42,26 @@ class Wrapper extends StatelessWidget {
             new Expanded(
                 flex: 5,
                 child: Center(
-                    child: new Text(
-                  "Orbit",
-                  style: new TextStyle(
-                      fontFamily: 'Nunito',
-                      fontSize: ScreenUtil().setSp(140.0),
-                      letterSpacing: 1.2,
-                      fontWeight: FontWeight.w800,
-                      color: Theme.of(context).textSelectionColor),
+                    child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    Container(
+                      child: new Image(
+                          width: MediaQuery.of(context).size.width * 0.8,
+                          height: MediaQuery.of(context).size.width * 0.8,
+                          image:
+                              new AssetImage('assets/logo/cyan with glow.png')),
+                    ),
+                    new Text(
+                      "Orbit",
+                      style: new TextStyle(
+                          fontFamily: 'Nunito',
+                          fontSize: ScreenUtil().setSp(140.0),
+                          letterSpacing: 1.2,
+                          fontWeight: FontWeight.w800,
+                          color: Theme.of(context).textSelectionColor),
+                    ),
+                  ],
                 ))),
             new Expanded(
                 flex: 3,
@@ -78,8 +90,7 @@ class Wrapper extends StatelessWidget {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) =>
-                                        Login()));
+                                    builder: (context) => Login()));
                           },
                           child: new Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -88,8 +99,7 @@ class Wrapper extends StatelessWidget {
                                 "LOG IN",
                                 style: new TextStyle(
                                     fontFamily: 'Nunito',
-                                    color:
-                                        Theme.of(context).textSelectionColor,
+                                    color: Theme.of(context).textSelectionColor,
                                     letterSpacing: 1.2,
                                     wordSpacing: 1.2),
                               )
@@ -107,7 +117,10 @@ class Wrapper extends StatelessWidget {
                           color: Colors.white,
                           elevation: 10.0,
                           onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => Signup()));
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => SignUp()));
                           },
                           child: new Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -116,8 +129,7 @@ class Wrapper extends StatelessWidget {
                                 "SIGN UP",
                                 style: new TextStyle(
                                     fontFamily: 'Nunito',
-                                    color:
-                                        Theme.of(context).textSelectionColor,
+                                    color: Theme.of(context).textSelectionColor,
                                     letterSpacing: 1.2),
                               )
                             ],
