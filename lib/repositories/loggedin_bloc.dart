@@ -1,17 +1,31 @@
 import 'package:bloc/bloc.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-enum LoggedEvent {
-  triggerChange
+class LoggedEvent {}
+
+class ChangeUser extends LoggedEvent {
+  final String id;
+  ChangeUser(this.id);
 }
 
-class LoggedBloc extends Bloc<LoggedEvent, bool> {
+getUser() async {
+  final FirebaseUser user = await FirebaseAuth.instance.currentUser();
+  return user.email.toString();
+}
+
+class LoggedBloc extends Bloc<LoggedEvent, String> {
   @override
-  bool get initialState => false ;
+  String get initialState => getUser() ;
 
   @override
-  Stream<bool> mapEventToState(
+  void onTransition(Transition<LoggedEvent, String> transition) {
+    print(transition);
+  }
+
+  @override
+  Stream<String> mapEventToState(
     LoggedEvent event,
   ) async* {
-    if(event == LoggedEvent.triggerChange) yield !state ;
+    if (event is ChangeUser) yield event.id;
   }
 }
